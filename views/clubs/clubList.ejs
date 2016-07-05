@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clubs Directory</title>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2Iy-p6Rug8QoZAmr7aDApYWltpgKDzb0&callback=initMap" async defer></script-->
+    <script src="../lib/clubList.js"></script>
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+    <h1 id="mainHeading">Clubs</h1>
+    <p id="mainText">Directory of all clubs.</p>
+    <p><a href="/club/new">Create a new club</a></p>
+
+    <!-- Currently does not load any addresses
+    <div id="map" onload="initMap()" ></div>
+    -->
+
+    <table class="eventList">
+        <% clubs.forEach(function(club) { %>
+        <tr>
+            <td><a href="/club/<%= club.ID %>"><%= club.Name %></a></td>
+            <td id="address"><%= club.Address %></td>
+        </tr>
+        <% }); %>
+    </table>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+    <!-- div id="clubAddresses" style="display: none;">
+<% clubs.forEach(function(club) { %><% if (club.Address != "") {  %>{"name":"<%= club.Name %>","address":"<%= club.Address %>"}<% } }) %>
+    </div -->
+
+</html>

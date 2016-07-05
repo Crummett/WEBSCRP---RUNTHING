@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% details.forEach(function(details) { %>
+    <title><%= details.Name %></title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2Iy-p6Rug8QoZAmr7aDApYWltpgKDzb0&callback=initMap" async defer></script>
+    <script src="../lib/event.js"></script>
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% details.forEach(function(details) { %>
+    <h1 id="mainHeading"><%= details.Name %></h1>
+
+    <div id="profile">
+        <p id="date">Date: <%= details.Date %></p>
+        <p id="startTime">Start Time: <%= details.Start_Time %></p>
+        <p id="host">Host Club: <a href="/club/<%= details.Host_ID %>"><%= details.Club_Name %></a></p>
+        <% if (details.Location != "") { %>
+            <form id="locationForm">
+                Location: <a id="address"><%= details.Location %></a>
+                <button id="showHideButton" type="button" onclick="showHideMap()">Show Map</button>
+            </form>
+        <% } %>
+        <div id="map" onload="initMap()" style="display: none;" ></div>
+        <p id="description"><%= details.Description %></p>
+    </div>
+
+    <table id="eventResults">
+        <tr>
+            <th>Name</th>
+            <th>Club</th>
+            <th>Time</th>
+        </tr>
+        <% results.forEach(function(result) { %>
+            <tr id="resultRows">
+                <td><a href="/user/<%= result.ID %>"><%= result.First_Name %> <%= result.Last_Name %></a></td>
+                <td><a href="/club/<%= result.Club_ID %>"><%= result.Club_Name %></a></td>
+                <td><%= result.Time %></td>
+            </tr>
+        <% }); %>
+    </table>
+    <% }); %>
+
+    <form id="addResult">
+        <b>Add Result</b>
+        <br>
+        Runner: <select id="userSelection">
+            <% users.forEach(function(user) { %>
+            <option value="<%= user.ID %>"><%= user.First_Name %> <%= user.Last_Name %></option>
+            <% }); %></select>
+        Time: <input class="userFormOption" type="time" id="time" step="1" >
+        <br>
+        <button id="sendButton" value="Send" onclick="postResult()">Submit</button>
+    </form>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+</html>

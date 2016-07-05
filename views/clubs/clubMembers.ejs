@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% club.forEach(function(club) { %>
+    <title><%= club.Name %> Members Directory</title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../../layout.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% club.forEach(function(club) { %>
+    <h1 id="name"><%= club.Name %></h1>
+    <p id="backToClub"><a href="/club/<%= club.ID %>">Back to club page</a></p>
+
+    <table id="memberList">
+        <tr>
+            <th>Name</th>
+            <th>Admin Status</th>
+        </tr>
+        <% members.forEach(function(member) { %>
+        <tr id="memberRows">
+            <td><a href="/user/<%= member.ID %>"><%= member.First_Name %> <%= member.Last_Name %></a></td>
+            <td><% if (member.Admin) { %>Admin<% } %></td>
+        </tr>
+        <% }); %>
+    </table>
+
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+</html>

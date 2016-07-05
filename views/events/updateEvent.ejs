@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% details.forEach(function(event) { %>
+    <title>Update <%= event.Name %></title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../../layout.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% details.forEach(function(event) { %>
+    <h1>Update <%= event.Name %></h1>
+
+    <form id="eventForm">
+        Name: <textarea class="userFormOption" id="name" rows="1" maxlength="40" cols="40"><%= event.Name %></textarea>
+        <br>
+        Date: <input class="userFormOption" type="date" id="date" value="<%= event.Date %>">
+        <br>
+        Start Time: <input class="userFormOption" type="time" id="startTime" value="<%= event.Start_Time %>">
+        <br>
+        Host Club: <select class="userFormOption" id="hostClub">
+            <option value="<%= event.Host_ID %>"><%= event.Host_Name %></option>
+            <% clubs.forEach(function(club) { %>
+                <option value="<%= club.ID %>"><%= club.Name %></option>
+            <% }); %>
+        </select>
+        <br>
+        Address: <textarea class="userFormOption" id="address" rows="3" cols="40"><%= event.Location %></textarea>
+        <br><br>
+        (Club's map location will be deduced from the address)
+        <br>
+        Description: <textarea class="userFormOption" rows="5" cols="50" id="description"><%= event.Description %></textarea>
+        <br><br><br><br>
+        <button id="sendButton" value="Send" onclick="updateEvent()">Update</button>
+    </form>
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../../lib/updateEvent.js"></script>
+
+</html>

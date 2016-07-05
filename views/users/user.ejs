@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% profile.forEach(function(profile) { %>
+        <title><%= profile.First_Name %> <%= profile.Last_Name %></title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% profile.forEach(function(profile) { %>
+    <h1 id="name"><%= profile.First_Name %> <%= profile.Last_Name %></h1>
+    <div id="profile">
+    <p id="gender">Gender: <% if (profile.Gender == "m") { %>Male<% } else { %>Female<% } %></p>
+    <p id="age">Age: <%= profile.Age %></p>
+    <p id="club">Club: <a href="/club/<%= profile.Club_ID %>"><%= profile.Club_Name %></a>
+        <% if (profile.Admin) { %> (Admin)<% } %></p>
+    <p id="description">Bio: <%= profile.Bio %></p>
+    <p id="updateLink"><a href="/user/update/<%= profile.ID %>">Update Profile</a></p>
+    </div>
+    <form id="chatRequest">
+        <button id="sendButton" value="Send" onclick="loadConversation()">Send Message</button>
+        as
+        <select id="otherUserSelection">
+            <% otherUsers.forEach(function(user) { %>
+            <option value="<%= user.ID %>"><%= user.First_Name %> <%= user.Last_Name %></option>
+            <% }); %>
+        </select>
+    </form>
+
+    <table id="eventResults">
+        <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <% results.forEach(function(result) { %>
+        <tr id="resultRows">
+            <td><a href="/event/<%= result.Event_ID %>"><%= result.Event_Name %></a></td>
+            <td><%= result.Date %></td>
+            <td><%= result.Time %></td>
+        </tr>
+        <% }); %>
+    </table>
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../lib/user.js"></script>
+
+</html>

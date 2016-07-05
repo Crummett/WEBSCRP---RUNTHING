@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% profile.forEach(function(profile) { %>
+    <title><%= profile.First_Name %> <%= profile.Last_Name %> - Update</title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../../layout.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% profile.forEach(function(profile) { %>
+    <h1><%= profile.First_Name %> <%= profile.Last_Name %> - Update</h1>
+    <p id="backToProfile"><a href="/user/<%= profile.ID %>">Back to profile</a></p>
+
+    <form id="userForm">
+        First Name: <textarea class="userFormOption" id="firstName" rows="1" maxlength="25" cols="25"><%= profile.First_Name %></textarea>
+        <br>
+        Last Name: <textarea class="userFormOption" id="lastName" rows="1" maxlength="25" cols="25"><%= profile.Last_Name %></textarea>
+        <br>
+        Age: <select class="userFormOption" id="age">
+            <option value="<%= profile.Age %>"><%= profile.Age %></option>
+            <% for (var i=13;i<=100;i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+            <% } %>
+        </select>
+        <br>
+        Gender: <select class="userFormOption" id="gender">
+            <% if (profile.Gender == "m") { %>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+            <% } else if (profile.Gender == "f") { %>
+                <option value="f">Female</option>
+                <option value="m">Male</option>
+            <% } %>
+        </select>
+        <br>
+        Bio: <textarea class="userFormOption" rows="5" cols="50" id="bio"><%= profile.Bio %></textarea>
+        <br><br><br><br>
+        <button id="sendButton" value="Send" onclick="updateUser()" >Update</button>
+    </form>
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../../lib/updateUser.js"></script>
+
+</html>

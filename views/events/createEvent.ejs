@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create A New Event</title>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <h1>Create A New Event</h1>
+
+    <form id="eventForm">
+        Name: <textarea class="userFormOption" id="name" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        Date: <input class="userFormOption" type="date" id="date">
+        <br>
+        Start Time: <input class="userFormOption" type="time" id="startTime">
+        <br>
+        Host Club: <select class="userFormOption" id="hostClub">
+            <% clubs.forEach(function(club) { %>
+            <option value="<%= club.ID %>"><%= club.Name %></option>
+            <% }); %>
+        </select>
+        <br>
+        1st Line of Address: <textarea class="userFormOption" id="address1" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        2nd Line of Address: <textarea class="userFormOption" id="address2" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        City: <textarea class="userFormOption" id="address3" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        Post Code: <textarea class="userFormOption" id="address4" rows="1" maxlength="8" cols="8"></textarea>
+        <br>
+        (Club's map location will be deduced from the address)
+        <br>
+        Description: <textarea class="userFormOption" rows="5" cols="50" id="description"></textarea>
+        <br><br><br><br>
+        <button id="sendButton" value="Send" onclick="postEvent()">Create</button>
+    </form>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../lib/createEvent.js"></script>
+
+</html>

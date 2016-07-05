@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events Directory</title>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+    <h1 id="mainHeading">Events</h1>
+    <p id="mainText">All events</p>
+    <p><a href="/event/new">Create a new event</a></p>
+
+    <table class="eventList">
+        <th>Name</th>
+        <th>Date</th>
+        <% events.forEach(function(event) { %>
+        <tr>
+            <td><a href="/event/<%= event.ID %>"><%= event.Name %></a></td>
+            <td><%= event.Date %></td>
+        </tr>
+        <% }); %>
+    </table>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="./events/eventList.js"></script>
+
+</html>

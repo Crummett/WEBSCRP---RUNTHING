@@ -1,0 +1,186 @@
+body {
+    font-family: "Lucida Sans";
+}
+
+#header {
+    background-color:maroon;
+    color:white;
+    text-align:left;
+    padding-left: 2%;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    font-weight: lighter;
+    border: none;
+}
+
+#mainArea {
+    margin: auto;
+    width: 60%;
+    padding: 10px
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+}
+
+#resultRows:hover {
+    background: #f5ff66;
+}
+
+#topNav > nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: maroon;
+    overflow: hidden;
+}
+
+#topNav > nav > ul {
+    margin: auto;
+    width: 60%;
+    padding: 0;
+}
+
+#topNav > nav > ul > li {
+    background-color: rgba(155, 0, 0, 0.91);
+    display: inline-block;
+    list-style-type: none;
+    float: right;
+}
+
+#topNav > nav > ul > #mainTitle {
+    background-color: rgba(155, 0, 0, 0.91);
+    display: inline-block;
+    list-style-type: none;
+    float: left;
+}
+
+#topNav > nav > ul > li > a {
+    color: white;
+    background-color:maroon;
+    display: block;
+    line-height: 2em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+}
+
+#topNav > nav > ul > li > a:hover {
+    /** changes the background colour to maroon with 90% opacity when hovered over */
+    background-color: rgba(155, 0, 0, 0.91);
+}
+
+#sideNav > nav {
+    margin: 0;
+    padding: 0;
+    background-color: maroon;
+    overflow: hidden;
+}
+
+#sideNav > nav > ul {
+    margin: auto;
+    width: 60%;
+    padding: 0;
+}
+
+#sideNav > nav > ul > li {
+    background-color: rgba(155, 0, 0, 0.91);
+    list-style-type: none;
+}
+
+#sideNav > nav > ul > li > a {
+    color: white;
+    background-color:maroon;
+    display: block;
+    line-height: 2em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+}
+
+#sideNav > nav > ul > li > a:hover {
+    /** changes the background colour to maroon with 90% opacity when hovered over */
+    background-color: rgba(155, 0, 0, 0.91);
+}
+
+h1 {
+    margin: auto;
+    margin-bottom: 15px;
+    width: 60%;
+    text-align: center;
+}
+
+#profile {
+    border-radius: 5px;
+    border: 1px solid #a9a9a9;
+}
+
+#profile > p {
+    margin: 10px;
+}
+
+
+#postDetails {
+    border-spacing: 15px;
+    border-top: 1px solid #a9a9a9;
+    padding-top: 10px;
+}
+
+form {
+    border-radius: 5px;
+    border: 1px solid #a9a9a9;
+    padding: 10px;
+    line-height: 150%;
+}
+
+form > #bioForm {
+    width: 80%;
+}
+
+form > #newPostText {
+    width: 100%;
+}
+
+form > .userFormOption {
+    float: right;
+}
+
+#locationForm {
+    border: none;
+    line-height: 100%;
+    padding: 0px;
+    padding-left: 10px;
+}
+
+#footer {
+    border-spacing: 15px;
+    border-top: 1px solid #a9a9a9;
+    padding-top: 10px;
+    font-size: small;
+    width: 60%;
+    margin: auto;
+}
+
+#footer > #footerInfo {
+    float: left;
+}
+
+#footer > #copyrights {
+    float: right;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    margin: auto;
+}

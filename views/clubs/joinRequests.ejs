@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% club.forEach(function(club) { %>
+        <title><%= club.Name %></title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../../layout.css">
+    <link rel="shortcut icon" href="../../favicon.ico" />
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% club.forEach(function(club) { %>
+    <h1 id="name"><%= club.Name %></h1>
+    <p id="backToClub"><a href="/club/<%= club.ID %>">Back to club page</a></p>
+
+    <table id="requestList">
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% requests.forEach(function(member) { %>
+        <tr id="memberRows">
+            <td><a href="/user/<%= member.ID %>"><%= member.First_Name %> <%= member.Last_Name %></a></td>
+            <td><button id="sendButton" value="Send" onclick="acceptJoinRequest(<%= member.ID %>)">Accept</button></td>
+            <td><button id="sendButton" value="Send" onclick="denyJoinRequest(<%= member.ID %>)">Deny</button></td>
+        </tr>
+        <% }); %>
+    </table>
+
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../../lib/joinRequests.js"></script>
+
+</html>

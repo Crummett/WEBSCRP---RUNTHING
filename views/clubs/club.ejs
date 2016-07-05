@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% club.forEach(function(club) { %>
+    <title><%= club.Name %></title>
+    <% }); %>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2Iy-p6Rug8QoZAmr7aDApYWltpgKDzb0&callback=initMap" async defer></script>
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <% club.forEach(function(club) { %>
+    <h1 id="name"><%= club.Name %></h1>
+    <p id="membersLink"><a href="/club/users/<%= club.ID %>">Club Members</a></p>
+    <div id="profile">
+        <p id="phone"><b>Phone Number:</b> <%= club.Phone_Number %></p>
+        <p id="email"><b>Email:</b> <%= club.Email %></p>
+        <% if (club.Address != "") { %>
+        <form id="locationForm">
+            Location: <a id="address"><%= club.Address %></a>
+            <button id="showHideButton" type="button" onclick="showHideMap()">Show Map</button>
+        </form>
+        <% } %>
+        <div id="map" onload="initMap()" style="display: none;" ></div>
+        <p id="admins"><b>Admins:</b>
+        <% admins.forEach(function(admin) { %>
+            <a href="/user/<%= admin.ID %>"><%= admin.First_Name %> <%= admin.Last_Name %></a>,
+        <% }); %></p>
+        <p id="description"><%= club.Description %></p>
+    </div>
+
+    <form id="joinRequest">
+        <button id="sendButton" value="Send" onclick="sendJoinRequest()">Request to Join</button>
+         as
+        <select id="nonMembersSelection">
+            <% nonMembers.forEach(function(member) { %>
+            <option value="<%= member.ID %>"><%= member.First_Name %> <%= member.Last_Name %></option>
+            <% }); %>
+        </select>
+        <a href="/club/join_requests/<%= club.ID %>">(Join Requests)</a>
+    </form>
+
+    <div id="posts">
+        <% posts.forEach(function(post) { %>
+            <p id="postDetails"><a href="/user/<%= post.Runner_ID %>"><%= post.First_Name %> <%= post.Last_Name %></a> - <%= post.Time_Posted %></p>
+            <p id="postContent"><%= post.Post %></p>
+        <% }); %>
+    </div>
+
+    <form id="postForm">
+        <textarea id="newPostText" rows="5" cols="50" placeholder="Select a poster and enter a post."></textarea>
+        <br>
+        <select id="membersSelection">
+            <% members.forEach(function(member) { %>
+            <option value="<%= member.ID %>"><%= member.First_Name %> <%= member.Last_Name %></option>
+            <% }); %>
+        </select>
+        <button id="sendButton" value="Send" onclick="postMessage()">Send</button>
+    </form>
+
+    <% }); %>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../lib/club.js"></script>
+
+</html>

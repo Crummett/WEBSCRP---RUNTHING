@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create A New User</title>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <h1>Create A New User</h1>
+
+    <!-- Doesn't work currently.
+    <% newUser.forEach(function(newUser) { %>
+        <p><a href="/user/<% newUser.newUser %>">Last user created</a></p>
+    <% }); %>
+    -->
+
+    <form id="userForm">
+        First Name: <textarea class="userFormOption" id="firstName" rows="1" maxlength="25" cols="25"></textarea>
+        <br>
+        Last Name: <textarea class="userFormOption" id="lastName" rows="1" maxlength="25" cols="25"></textarea>
+        <br>
+        Age: <select class="userFormOption" id="age">
+            <% for (var i=13;i<=100;i++) { %>
+                <option value="<%= i %>"><%= i %></option>
+            <% } %>
+        </select>
+        <br>
+        Gender: <select class="userFormOption" id="gender">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+        </select>
+        <br>
+        Bio: <textarea class="userFormOption" rows="5" cols="50" id="bio"></textarea>
+        <br><br><br><br>
+        <button id="sendButton" value="Send" onclick="postUser()">Create</button>
+    </form>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../lib/createUser.js"></script>
+
+</html>

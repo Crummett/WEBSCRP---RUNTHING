@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create A New Club</title>
+    <link rel="stylesheet" type="text/css" href="../layout.css">
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+
+<%- include('../topNav') %>
+
+<div id="mainArea">
+
+    <h1>Create A New Club</h1>
+
+    <form id="clubForm">
+        Name: <textarea class="userFormOption" id="name" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        Phone Number: <textarea class="userFormOption" id="phoneNumber" rows="1" maxlength="15" cols="15"></textarea>
+        <br>
+        E-Mail Address: <input class="userFormOption" type="email" id="email">
+        <br>
+        1st Line of Address: <textarea class="userFormOption" id="address1" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        2nd Line of Address: <textarea class="userFormOption" id="address2" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        City: <textarea class="userFormOption" id="address3" rows="1" maxlength="40" cols="40"></textarea>
+        <br>
+        Post Code: <textarea class="userFormOption" id="address4" rows="1" maxlength="8" cols="8"></textarea>
+        <br>
+        (Club's map location will be deduced from the address)
+        <br>
+        Description: <textarea class="userFormOption" rows="5" cols="50" id="description"></textarea>
+        <br><br><br><br>
+        <button id="sendButton" value="Send" onclick="postClub()">Create</button>
+    </form>
+
+</div>
+
+<%- include('../footer') %>
+
+</body>
+
+<script src="../lib/createClub.js"></script>
+
+</html>
